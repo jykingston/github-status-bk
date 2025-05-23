@@ -1,0 +1,12 @@
+steps:
+  - command: echo "--> Start of concurrency gate"
+    key: "start-gate"
+  - label: ":pipeline_upload: Bootstrap"
+    command: echo Bootstrap; sleep 30
+    key: "run-steps"
+    depends_on:
+      - start-gate
+  - command: echo "End of concurrency gate <--"
+    depends_on:
+      - run-steps
+
